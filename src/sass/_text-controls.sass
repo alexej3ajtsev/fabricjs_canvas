@@ -1,0 +1,98 @@
+.text-panel
+  opacity: .8
+  padding: 10px
+  border-radius: 5px
+  background-color: #eee
+  box-shadow: 0px 3px 13px 0px rgba(50, 50, 50, 0.71)
+  transition: opacity .25s ease-in-out
+  &:hover
+    opacity: 1
+  .font-change
+    position: absolute
+    right: 10px
+    top: 55px
+    height: 30px
+    border: none
+    font-size: 1.0em
+    &::after
+      content: 'Шрифт'
+      width: 50%
+      height: 100%
+      left: 0
+      top: 0
+      transform: translateY(-50%)
+  .canvas-text-typing
+    position: absolute
+    left: 10px
+    top: 10px
+    height: 30px
+    font-size: 1em
+    width: 60%
+  .text-align-cont
+    position: absolute
+    left: 10px
+    top: 60px
+    width: 50%
+    height: 30px
+    text-align: left
+    .text-align
+      display: inline-block
+      margin-right: 20px
+
+      &.center,
+      &.left,
+      &.right
+        position: relative
+        visibility: hidden
+        &::after
+          visibility: visible
+          position: absolute
+          content: ''
+          font-family: FontAwesome
+          width: 30px
+          height: 30px
+          top: 0
+          left: 0
+          font-size: 1.5em
+      &.center:checked,
+      &.left:checked,
+      &.right:checked
+          &::after
+            color: $lightBlue
+      &.center
+        &::after
+          content: '\f037'
+      &.left
+        &::after
+          content: '\f036'
+      &.right
+        &::after
+          content: '\f038'
+
+  .sp-replacer
+    position: absolute
+    top: 34px
+    right: 60px
+    padding: 0
+    height: 10px
+    overflow: visible
+    .sp-dd
+      line-height: 7px
+    &::after
+      position: absolute
+      content: '\f031'
+      font-family: FontAwesome
+      width: 20px
+      height: 20px
+      top: -24px
+      font-size: 20px
+      left: 50%
+      transform: translateX(-50%)
+    .sp-preview
+      position: relative
+      top: 1px
+      height: 6px
+    &:last-of-type
+      right: 10px
+      &::after
+        content: '\f044'

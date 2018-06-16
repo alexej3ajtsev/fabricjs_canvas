@@ -1,0 +1,160 @@
+#modalNewEditor
+  position: absolute
+  background-color: rgba(0,0,0,.8)
+  width: 100%
+  height: 100%
+  top: -100%
+  left: 0
+  &.show
+    top: 0
+  #closeNewEditor
+    position: absolute
+    top: 100px
+    right: 20px
+    width: 60px
+    height: 60px
+    &::after
+      position: absolute
+      content: '\f057'
+      text-align: center
+      font-size: 3.5em
+      line-height: 60px
+      font-family: FontAwesome
+      color: white
+      width: 100%
+      height: 100%
+      left: 0
+      top: 0
+  #cContainer
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+    .section
+      position: absolute
+      z-index: 1
+      opacity: 0
+      width: 50%
+      height: 100%
+      top: 0
+      background-color: $light
+      transition: opacity $secTransition, left $secTransition, right $secTransition
+      .filters-container
+        #applyFilters
+          display: block
+          background-color: $lightBlue
+          width: calc(100% - 40px)
+          height: 40px
+          margin: 20px auto
+          margin-left: 30px
+          line-height: 40px
+          text-decoration: none
+          color: white
+          font-weight: 700
+          border-radius: 5px
+          text-align: center
+        .filter
+          width: 100%
+          height: 60px
+          position: relative
+          left: 60px
+          .filter-thumb
+            width: 40px
+            height: 40px
+            position: absolute
+            left: -50px
+            border-radius: 3px
+          label
+            display: inline-block
+            width: calc(100% - 60px)
+            font-weight: 700
+            position: relative
+            small
+              position: absolute
+              font-weight: 400
+              left: 0
+              top: 20px
+              color: #777
+              font-style: italic
+          input
+            position: absolute
+            right: 60px
+            width: 25px
+            top: 25%
+            transform: translateY(-50%)
+            height: 25px
+            border-radius: 5px
+            border: 1px solid $lightBlue
+      .stickers-container
+        display: flex
+        flex-flow: row wrap
+        width: 100%
+        align-items: center
+        justify-content: center
+        .sticker
+          width: 70px
+          height: 70px
+          background-size: cover
+          border-radius: 10px
+          border: 1px solid darkorange
+          margin: 5px
+          box-sizing: border-box
+          cursor: pointer
+      .filters-container,
+      .stickers-container
+        padding-top: 60px
+      .back-btn
+        position: absolute
+        height: 30px
+        width: 100px
+        top: 0
+        left: 30px
+        transform: translateY(50%)
+        z-index: 2
+        text-transform: uppercase
+        cursor: pointer
+        &.left
+          left: unset
+          right: 30px
+      &.show
+        opacity: 1
+      &.left
+        left: -100%
+        .back-btn
+          right: 0
+        &.show
+          left: 0
+      &.right
+        right: -100%
+        .back-btn
+          left: 10px
+        &.show
+          right: 0
+
+.buttons-panel
+  background-color: $dark
+  height: 50px
+  position: absolute
+  bottom: -50px
+  width: 100%
+  display: flex
+  align-items: center
+  justify-content: center
+  button
+    margin: 5px
+    cursor: pointer
+    width: 23%
+    height: 40px
+    border: none
+    border-radius: 5px
+    font-size: 1em
+    color: $light
+    background-color: $lightBlue
+    text-align:
+    white-space: nowrap
+    position: relative
+
+@media screen and (max-width: 991px)
+  .buttons-panel
+    i
+      display: none

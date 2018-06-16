@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="node_modules/spectrum-colorpicker/spectrum.css">
+    <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="node_modules/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.css">
+    <link rel="stylesheet" href="node_modules/reset-css/reset.css">
+    <link rel="stylesheet" href="dist/css/canvas-editor.css">
+    <title>Document</title>
+</head>
+<style>
+    @font-face {
+        font-family: "Impact";
+        src: url("fonts/Impact.eot") format("embedded-opentype"),
+        url("fonts/Impact.ttf") format("truetype"),
+        url("fonts/Impact.woff") format("woff");
+    }
+    @font-face {
+        font-family: "Lobster";
+        src: url("fonts/lobster.ttf") format("truetype");
+    }
+</style>
+<body>
+<div id="memeContainer">
+    <div class="meme-template">
+        <img class="meme-template"
+             data-src="img/a-ty-tochno.jpg"
+             src="img/a-ty-tochno.jpg">
+
+        <img class="meme-template"
+             data-src="https://mr-mem.ru/images/memes/mamkin-houligan.jpg"
+             src="https://mr-mem.ru/images/memes/mamkin-houligan.jpg">
+    </div>
+</div>
+<br><br><br>
+<div id="modalNewEditor">
+    <a href="" id="closeNewEditor"></a>
+    <div id="cContainer" >
+        <canvas id="canvas"></canvas>
+        <div class="section left">
+            <a class="back-btn left"><i class="fa fa-angle-left"></i> Скрыть</a>
+            <div class="filters-container">
+                <div class="filter" data-src="img/a-ty-tochno.jpg">
+                    <img src="img/a-ty-tochno.jpg" alt="" class="filter-thumb">
+                    <label for="filterGrayscale">
+                        Graycsale
+                        <small>Убрать цвета</small>
+                    </label>
+                    <input type="checkbox" id="filterGrayscale" value="Grayscale" data-value="" >
+                </div>
+
+                <div class="filter" data-src="img/a-ty-tochno.jpg">
+                    <img src="img/a-ty-tochno.jpg" alt="" class="filter-thumb">
+                    <label for="filterInvert">
+                        Invert
+                        <small>Инверсия цветов</small>
+                    </label>
+                    <input type="checkbox" id="filterInvert" value="Invert" data-value="" >
+                </div>
+
+                <div class="filter" data-src="img/a-ty-tochno.jpg">
+                    <img src="img/a-ty-tochno.jpg" alt="" class="filter-thumb">
+                    <label for="filterSepia">
+                        Sepia
+                        <small>Застаренный</small>
+                    </label>
+                    <input type="checkbox" id="filterSepia" value="Sepia" data-value="" >
+                </div>
+
+                <div class="filter" data-src="img/a-ty-tochno.jpg">
+                    <img src="img/a-ty-tochno.jpg" alt="" class="filter-thumb">
+                    <label for="filterVintage">
+                        Vintage
+                        <small>Винтажный</small>
+                    </label>
+                    <input type="checkbox" id="filterVintage" value="Vintage" data-value="" >
+                </div>
+
+                <div class="filter" data-src="img/a-ty-tochno.jpg">
+                    <img src="img/a-ty-tochno.jpg" alt="" class="filter-thumb">
+                    <label for="filterBlackWhite">
+                        Black/White
+                        <small>Черно-белый</small>
+                    </label>
+                    <input type="checkbox" id="filterBlackWhite" value="BlackWhite" data-value="" >
+                </div>
+
+                <div class="filter" data-src="img/a-ty-tochno.jpg">
+                    <img src="img/a-ty-tochno.jpg" alt="" class="filter-thumb">
+                    <label for="filterPolaroid">
+                        Polaroid
+                        <small>Поляризационный</small>
+                    </label>
+                    <input type="checkbox" id="filterPolaroid" value="Polaroid" data-value="" >
+                </div>
+
+                <div class="filter" data-src="img/a-ty-tochno.jpg">
+                    <img src="img/a-ty-tochno.jpg" alt="" class="filter-thumb">
+                    <label for="filterBrownie">
+                        Brownie
+                        <small>В коричневых тонах</small>
+                    </label>
+                    <input type="checkbox" id="filterBrownie" value="Brownie" data-value="" >
+                </div>
+
+                <div class="filter" data-src="img/a-ty-tochno.jpg">
+                    <img src="img/a-ty-tochno.jpg" alt="" class="filter-thumb">
+                    <label for="filterTechnicolor">
+                        Technicolor
+                        <small>Техниколор</small>
+                    </label>
+                    <input type="checkbox" id="filterTechnicolor" value="Technicolor" data-value="" >
+                </div>
+
+                <div class="filter"  data-src="img/a-ty-tochno.jpg">
+                    <img src="img/a-ty-tochno.jpg" alt="" class="filter-thumb">
+                    <label for="filterKodachrome">
+                        Kodachrome
+                        <small>Kodachrome</small>
+                    </label>
+                    <input type="checkbox" id="filterKodachrome" value="Kodachrome" data-value="" >
+                </div>
+                <a href="#" id="applyFilters">Применить фильтры</a>
+            </div>
+
+        </div>
+        <div class="section right">
+            <a class="back-btn">Скрыть <i class="fa fa-angle-right"></i></a>
+            <div class="stickers-container" id="stickersContainer">
+                <div class="sticker"
+                     data-src="img/stickers/st.png"
+                     style="background-image:url(img/stickers/st.png)"></div>
+                <div class="sticker"
+                     data-src="img/stickers/st2.png"
+                     style="background-image:url(img/stickers/st2.png)"></div>
+                <div class="sticker"
+                     data-src="img/stickers/st3.png"
+                     style="background-image:url(img/stickers/st3.png)"></div>
+                <div class="sticker"
+                     data-src="img/stickers/st4.png"
+                     style="background-image:url(img/stickers/st4.png)"></div>
+                <div class="sticker"
+                     data-src="img/stickers/st5.png"
+                     style="background-image:url(img/stickers/st5.png)"></div>
+                <div class="sticker"
+                     data-src="img/stickers/st6.png"
+                     style="background-image:url(img/stickers/st6.png)"></div>
+                <div class="sticker"
+                     data-src="img/stickers/st7.png"
+                     style="background-image:url(img/stickers/st7.png)"></div>
+                <div class="sticker"
+                     data-src="img/stickers/st8.png"
+                     style="background-image:url(img/stickers/st8.png)"></div>
+                <div class="sticker"
+                     data-src="img/stickers/st9.png"
+                     style="background-image:url(img/stickers/st9.png)"></div>
+                <div class="sticker"
+                     data-src="img/stickers/st10.png"
+                     style="background-image:url(img/stickers/st10.png)"></div>
+                <div class="sticker"
+                     data-src="img/stickers/st.png"
+                     style="background-image:url(img/stickers/st.png)"></div>
+                <div class="sticker"
+                     data-src="img/stickers/st2.png"
+                     style="background-image:url(img/stickers/st2.png)"></div>
+                <div class="sticker"
+                     data-src="img/stickers/st3.png"
+                     style="background-image:url(img/stickers/st3.png)"></div>
+                <div class="sticker"
+                     data-src="img/stickers/st4.png"
+                     style="background-image:url(img/stickers/st4.png)"></div>
+                <div class="sticker"
+                     data-src="img/stickers/st5.png"
+                     style="background-image:url(img/stickers/st5.png)"></div>
+                <div class="sticker"
+                     data-src="img/stickers/st6.png"
+                     style="background-image:url(img/stickers/st6.png)"></div>
+                <div class="sticker"
+                     data-src="img/stickers/st7.png"
+                     style="background-image:url(img/stickers/st7.png)"></div>
+                <div class="sticker"
+                     data-src="img/stickers/st8.png"
+                     style="background-image:url(img/stickers/st8.png)"></div>
+                <div class="sticker"
+                     data-src="img/stickers/st9.png"
+                     style="background-image:url(img/stickers/st9.png)"></div>
+                <div class="sticker"
+                     data-src="img/stickers/st10.png"
+                     style="background-image:url(img/stickers/st10.png)"></div>
+                <div class="sticker"
+                     data-src="img/stickers/st.png"
+                     style="background-image:url(img/stickers/st.png)"></div>
+                <div class="sticker"
+                     data-src="img/stickers/st2.png"
+                     style="background-image:url(img/stickers/st2.png)"></div>
+                <div class="sticker"
+                     data-src="img/stickers/st3.png"
+                     style="background-image:url(img/stickers/st3.png)"></div>
+                <div class="sticker"
+                     data-src="img/stickers/st4.png"
+                     style="background-image:url(img/stickers/st4.png)"></div>
+                <div class="sticker"
+                     data-src="img/stickers/st5.png"
+                     style="background-image:url(img/stickers/st5.png)"></div>
+                <div class="sticker"
+                     data-src="img/stickers/st6.png"
+                     style="background-image:url(img/stickers/st6.png)"></div>
+                <div class="sticker"
+                     data-src="img/stickers/st7.png"
+                     style="background-image:url(img/stickers/st7.png)"></div>
+                <div class="sticker"
+                     data-src="img/stickers/st8.png"
+                     style="background-image:url(img/stickers/st8.png)"></div>
+                <div class="sticker"
+                     data-src="img/stickers/st9.png"
+                     style="background-image:url(img/stickers/st9.png)"></div>
+                <div class="sticker"
+                     data-src="img/stickers/st10.png"
+                     style="background-image:url(img/stickers/st10.png)"></div>
+            </div>
+        </div>
+
+        <div class="buttons-panel">
+            <button id="leftSectBtn" class="" title="Фильтры"><i class="fa fa-magic"></i> Фильтры</button>
+            <button id="saveImgBtn" class="sea-color" title="Сохранить"><i class="fa fa-floppy-o" aria-hidden="true"></i> Сохранить</button>
+            <button id="rightSectBtn" class="magenta" title="Стикеры"><i class="fa fa-image"></i> Стикеры</button>
+            <button id="reloadImage" class="yellow" title="Отменить все изменения"><i class="fa fa-retweet"></i> Заново</button>
+        </div>
+    </div>
+</div>
+
+<script src="node_modules/fabric/dist/fabric.js"></script>
+<script src="node_modules/jquery/dist/jquery.min.js"></script>
+<script src="node_modules/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="node_modules/spectrum-colorpicker/spectrum.js"></script>
+<script src="node_modules/fontfaceobserver/fontfaceobserver.standalone.js"></script>
+<script src="dist/js/canvas-editor.js"></script>
+</body>
+</html>
